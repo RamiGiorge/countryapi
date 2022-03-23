@@ -1,23 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import Card from "./components/Card/Card";
+import useFetch from "./sevices/useFetch";
 
 function App() {
+
+  const [n, setN] = useState(20)
+  const { isLoading, error, countries } = useFetch()
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {isLoading && <h3>Loading...</h3>}
+      {error && <h3>{error}</h3>}
+      {countries?.map((country, i) => (
+        i < n ? <Card country={country} key={country.name.common} /> : null
+      ))}
+      <button onClick={() => setN(prev => prev + 20)}>fetch more</button>
     </div>
   );
 }
