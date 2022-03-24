@@ -4,18 +4,21 @@ import useFetch from "./sevices/useFetch";
 
 function App() {
 
+  const [dark, setDark] = useState(false)
   const [n, setN] = useState(20)
   const { isLoading, error, countries } = useFetch()
 
   return (
-    <div>
+    <main className={dark ? 'dark-mode' : ''}>
       {isLoading && <h3>Loading...</h3>}
       {error && <h3>{error}</h3>}
-      {countries?.map((country, i) => (
+      <section className="countryGrid">{countries?.map((country, i) => (
         i < n ? <Card country={country} key={country.name.common} /> : null
       ))}
+      </section>
       <button onClick={() => setN(prev => prev + 20)}>fetch more</button>
-    </div>
+      <button onClick={() => setDark(!dark)}>Toggle Dark</button>
+    </main>
   );
 }
 
