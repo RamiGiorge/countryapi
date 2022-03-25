@@ -1,6 +1,5 @@
-import { useState } from "react";
-import { FaChevronDown } from "react-icons/fa";
-import Card from "./components/Card/Card";
+import { useEffect, useState } from "react";
+import CountriesGrid from "./components/CountriesGrid/CountriesGrid";
 import Navbar from "./components/Navbar/Navbar";
 import SearchForm from "./components/SearchForm/SearchForm";
 import useFetch from "./sevices/useFetch";
@@ -8,22 +7,20 @@ import useFetch from "./sevices/useFetch";
 function App() {
 
   const [dark, setDark] = useState(false)
-  const [n, setN] = useState(20)
   const { isLoading, error, countries } = useFetch()
+  const [results, setResults] = useState(null)
+
+  useEffect(() => {
+    setResults(countries)
+  }, [countries])
 
   return (
     <main className={dark ? 'dark-mode' : ''}>
       <Navbar setDark={setDark} />
-      <SearchForm />
+      <SearchForm countries={countries} setResults={setResults} />
       {isLoading && <h3>Loading...</h3>}
       {error && <h3>{error}</h3>}
-      <section className="countryGrid">{countries?.map((country, i) => (
-        i < n ? <Card country={country} key={country.name.common} /> : null
-      ))}
-      </section>
-      <button onClick={() => setN(prev => prev + 20)} className='fetchBtn'>
-        <FaChevronDown />
-      </button>
+      <CountriesGrid results={results} />
     </main>
   );
 }
