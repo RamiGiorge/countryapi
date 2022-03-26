@@ -1,11 +1,41 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
+import { FaChevronLeft } from 'react-icons/fa'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 const CountryDetails = () => {
     const navigate = useNavigate()
+    const { state: country } = useLocation()
+
+    const renderLanguages = () => (
+        <ul className='languages'>Languages Spoken: {Object.values(country.languages).map((language) => (
+            <li key={language}>{language}</li>
+        ))}
+        </ul>
+    )
+
+    const renderCurrencies = () => (
+        <ul className='currencies'>Currencies Used: {Object.values(country.currencies).map(({ name }) => (
+            <li key={Math.random()}>{name}</li>
+        ))}
+        </ul>
+    )
+
     return (
-        <div>
-            <button onClick={() => navigate('/')}>Back</button>
+        <div className='detailsContainer'>
+            <button onClick={() => navigate('/')} className='back'>
+                <FaChevronLeft />
+                <span>Back</span>
+            </button>
+            <div className='countryDetails'>
+                <h1>{country.name.common}</h1>
+                <img src={country.flags.png} alt="country flag" />
+                <p>Population: <span>{Number(country.population).toLocaleString()}</span></p>
+                <p>Region: <span>{country.region}</span></p>
+                <p>Capital: <span>{country.capital}</span></p>
+                {renderLanguages()}
+                {renderCurrencies()}
+                <p>Subregion: {country.subregion}</p>
+            </div>
         </div>
     )
 }

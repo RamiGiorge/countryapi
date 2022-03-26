@@ -184,7 +184,7 @@ main {
   font-weight: normal;
 }
 
-img {
+.card > img {
   height: 150px;
   width: 100%;
   margin: 10px 0;
@@ -213,6 +213,48 @@ img {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.detailsContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 40px;
+}
+
+.detailsContainer > button {
+  align-self: flex-start;
+  padding: 20px;
+  font-weight: 700;
+  color: var(--dark-gray);
+  border: 1px solid var(--faded);
+  border-radius: 10px;
+}
+
+.countryDetails {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  box-shadow: -8px -8px 15px #fff, 8px 8px 15px #babecc;
+  padding: 20px;
+  border-radius: 20px;
+}
+
+.languages, .currencies {
+  display: flex;
+  gap: 40px;
+  list-style: square;
+}
+
+.back {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
 }
 
 @keyframes fadein {
