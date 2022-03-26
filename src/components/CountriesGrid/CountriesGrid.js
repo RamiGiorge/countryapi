@@ -4,15 +4,16 @@ import Card from '../Card/Card';
 
 const CountriesGrid = ({ results }) => {
 
-    const [n, setN] = useState(20)
+    const [next, setNext] = useState(20)
 
     return (
         <div className='gridContainer'>
             <section className="countryGrid">{results?.map((country, i) => (
-                i < n ? <Card country={country} key={country.name.common} /> : null
+                i < next ? <Card country={country} key={country.name.common} /> : null
             ))}
             </section>
-            <button onClick={() => setN(prev => prev + 20)} className='fetchBtn'>
+            {!results?.length && <h3 className='searchResult'>No countries found!</h3>}
+            <button onClick={() => setNext(prev => prev + 20)} className='fetchBtn'>
                 <FaChevronDown />
             </button>
         </div>

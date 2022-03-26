@@ -30,6 +30,7 @@ const CountryDetails = () => {
                 <h1>{country.name.common}</h1>
                 <img src={country.flags.png} alt="country flag" />
                 <p>Population: <span>{Number(country.population).toLocaleString()}</span></p>
+                <p>Area: <span>{Number(country.area).toLocaleString()} km2</span></p>
                 <p>Region: <span>{country.region}</span></p>
                 <p>Capital: <span>{country.capital}</span></p>
                 {renderLanguages()}

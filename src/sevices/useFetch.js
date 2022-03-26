@@ -7,12 +7,12 @@ const fetchCountries = async () => {
 }
 
 const useFetch = () => {
-    const { data, status, error } = useQuery('countries', fetchCountries, {
+    const { data, isLoading, error } = useQuery('countries', fetchCountries, {
         staleTime: Infinity,
         cacheTime: 600000
     })
 
-    return { data, status, error }
+    return { data, isLoading, error }
 }
 
 export default useFetch

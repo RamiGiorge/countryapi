@@ -13,6 +13,11 @@ const SearchForm = ({ countries, setResults }) => {
   const autoRef = useRef(null)
 
   useEffect(() => {
+    const fetchBtn = document.querySelector('.fetchBtn')
+    input ? fetchBtn.style.display = 'none' : fetchBtn.style.display = 'flex'
+  }, [input])
+
+  useEffect(() => {
     countries && inputRef.current.focus()
   }, [countries])
 
