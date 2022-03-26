@@ -8,10 +8,10 @@ const CountriesGrid = ({ results }) => {
 
     return (
         <div className='gridContainer'>
-            <section className="countryGrid">{results?.map((country, i) => (
+            {results?.length ? <section className="countryGrid">{results.map((country, i) => (
                 i < next ? <Card country={country} key={country.name.common} /> : null
             ))}
-            </section>
+            </section> : null}
             {!results?.length && <h3 className='searchResult'>No countries found!</h3>}
             <button onClick={() => setNext(prev => prev + 20)} className='fetchBtn'>
                 <FaChevronDown />

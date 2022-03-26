@@ -46,6 +46,80 @@ main {
   position: relative;
 }
 
+.dark  .navbar {
+  background: black;
+  color: #e6eaf9;
+}
+
+.dark .navbar button {
+  color: #e9da11;
+}
+
+.dark .navbar h3 {
+  color: #f13a68;
+}
+
+.dark .searchForm {
+  background: black;
+  box-shadow: 0 0 8px #f13a68;
+}
+
+.dark .inputContainer, .dark .searchForm > .filterContainer {
+  background: var(--dark-gray);
+  box-shadow: none;
+}
+
+.dark .inputContainer > input, .dark .inputContainer > input::placeholder,
+.dark .searchForm > .filterContainer > .select
+{
+  color: #e6eaf9;
+}
+
+.dark button {
+  color: #e6eaf9;
+}
+
+.dark .countryGrid {
+  background: var(--dark-gray);
+}
+
+.dark .card, .dark .countryDetails {
+  box-shadow: 0 0 20px black;
+  background: black;
+  color: #e6eaf9;
+}
+
+.dark .card:hover {
+  box-shadow: none;
+  transform: none;
+  font-size: 20px;
+}
+
+.dark .card span, .dark .countryDetails span, .dark .countryDetails li {
+  color: #f13a68;
+}
+
+.dark .card h1, .dark .countryDetails h1 {
+  align-self: center;
+  color: #f13a68;
+}
+
+.dark .fetchBtn {
+  background: black;
+  color: #f13a68;
+  box-shadow: 0 -5px 20px black;
+}
+
+.dark .detailsContainer {
+  background: var(--dark-gray);
+}
+
+.dark .detailsContainer button {
+  box-shadow: none;
+  background: black;
+  color: #969aab;
+}
+
 .navbar {
   display: flex;
   align-items: center;
@@ -89,7 +163,7 @@ main {
 
 .inputContainer > input {
   border: none;
-  background-color: none;
+  background: none;
   outline: none;
   width: 100%;
 }
@@ -150,7 +224,12 @@ main {
   font-size: 1.2rem;
 }
 
+.gridContainer {
+  height: 100vh;
+}
+
 .countryGrid {
+  min-height: 100%;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 20px;
@@ -179,7 +258,7 @@ main {
   cursor: zoom-in;
 }
 
-.card span {
+.card span, .countryDetails span {
   color: var(--dark-gray);
   font-weight: normal;
 }
@@ -199,11 +278,11 @@ main {
   align-items: center;
   justify-content: center;
   color: var(--dark-gray);
-  width: 30%;
-  margin: 0 auto;
+  width: 100%;
   padding: 20px;
   font-size: 1.5rem;
   animation: fadein 1.5s ease-in-out infinite alternate;
+  box-shadow: 0 -5px 20px #fff;
 }
 
 .error {
@@ -236,9 +315,10 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 20px;
+  gap: 40px;
   padding: 40px;
+  background: var(--background);
+  height: 100%;
 }
 
 .detailsContainer > button {
@@ -258,6 +338,7 @@ main {
   box-shadow: -8px -8px 15px #fff, 8px 8px 15px #babecc;
   padding: 20px;
   border-radius: 20px;
+  font-weight: 700;
 }
 
 .languages, .currencies {
@@ -278,6 +359,7 @@ main {
   color: #f13a68;
   text-align: center;
   font-weight: 700;
+  margin-top: 40px;
 }
 
 @keyframes fadein {

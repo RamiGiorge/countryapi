@@ -35,7 +35,7 @@ const CountryDetails = () => {
                 <p>Capital: <span>{country.capital}</span></p>
                 {renderLanguages()}
                 {renderCurrencies()}
-                <p>Subregion: {country.subregion}</p>
+                <p>Subregion: <span>{country.subregion}</span></p>
             </div>
         </div>
     )
