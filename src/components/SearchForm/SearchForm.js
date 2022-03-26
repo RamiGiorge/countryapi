@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react"
-import { FaChevronDown, FaChevronUp, FaSearch } from "react-icons/fa"
+import { FaChevronDown, FaChevronUp } from "react-icons/fa"
 
 const SearchForm = ({ countries, setResults }) => {
   const [input, setInput] = useState("")
@@ -86,7 +86,6 @@ const SearchForm = ({ countries, setResults }) => {
   return (
     <form onSubmit={handleSearch} className="searchForm">
       <div className="inputContainer">
-        <FaSearch onClick={handleSearch} className="pointer" />
         <input ref={inputRef} type="text" value={input} onChange={onChange}
           placeholder="Search for a country..." disabled={countries ? false : true} />
 

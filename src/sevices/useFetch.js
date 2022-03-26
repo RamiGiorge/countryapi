@@ -1,30 +1,18 @@
-import { useState, useEffect } from 'react'
-import axios from "axios";
+import { useQuery } from 'react-query'
+import axios from 'axios'
+
+const fetchCountries = async () => {
+    const response = await axios.get('https://restcountries.com/v3.1/all')
+    return await response.data
+}
 
 const useFetch = () => {
-    const [countries, setCountries] = useState({
-        countries: null,
-        isLoading: true,
-        error: ''
+    const { data, status, error } = useQuery('countries', fetchCountries, {
+        staleTime: Infinity,
+        cacheTime: 600000
     })
 
-    useEffect(() => {
-        const CancelToken = axios.CancelToken;
-        const source = CancelToken.source();
-        const getCountries = async () => {
-            try {
-                const response = await axios.get('https://restcountries.com/v3.1/all', { cancelToken: source.token })
-                const data = await response.data
-                setCountries({ countries: data, isLoading: false, error: '' })
-            } catch (e) {
-                setCountries({ countries: null, isLoading: false, error: e.message })
-            }
-        }
-        getCountries()
-        return () => source.cancel()
-    }, [])
-
-    return countries
+    return { data, status, error }
 }
 
 export default useFetch

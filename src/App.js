@@ -1,28 +1,29 @@
-import { useEffect, useState } from "react";
-import CountriesGrid from "./components/CountriesGrid/CountriesGrid";
 import Navbar from "./components/Navbar/Navbar";
-import SearchForm from "./components/SearchForm/SearchForm";
-import useFetch from "./sevices/useFetch";
+import Home from "./containers/Home";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import CountryDetails from "./components/CountryDetails/CountryDetails";
+import { QueryClientProvider, QueryClient } from 'react-query'
+import { Suspense } from "react";
+import Loading from "./components/Loading/Loading";
 
 function App() {
-
-  const [dark, setDark] = useState(false)
-  const { isLoading, error, countries } = useFetch()
-  const [results, setResults] = useState(null)
-
-  useEffect(() => {
-    setResults(countries)
-  }, [countries])
+  const client = new QueryClient()
 
   return (
-    <main className={dark ? 'dark-mode' : ''}>
-      <Navbar setDark={setDark} />
-      <SearchForm countries={countries} setResults={setResults} />
-      {isLoading && <h3>Loading...</h3>}
-      {error && <h3>{error}</h3>}
-      <CountriesGrid results={results} />
-    </main>
-  );
+    <Router>
+      <main>
+        <Navbar />
+        <QueryClientProvider client={client}>
+          <Suspense fallback={<Loading />}>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/:country" element={<CountryDetails />} />
+            </Routes>
+          </Suspense>
+        </QueryClientProvider>
+      </main>
+    </Router>
+  )
 }
 
 export default App;
