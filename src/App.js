@@ -3,6 +3,7 @@ import Home from "./containers/Home";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import CountryDetails from "./components/CountryDetails/CountryDetails";
 import { QueryClientProvider, QueryClient } from 'react-query'
+import NotFound from "./components/NotFound/NotFound";
 
 function App() {
   const client = new QueryClient()
@@ -14,7 +15,8 @@ function App() {
         <QueryClientProvider client={client}>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/:country" element={<CountryDetails />} />
+            <Route path="/country/:country" element={<CountryDetails />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </QueryClientProvider>
       </main>

@@ -1,10 +1,14 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { FaChevronLeft } from 'react-icons/fa'
 import { useLocation, useNavigate } from 'react-router-dom'
 
 const CountryDetails = () => {
     const navigate = useNavigate()
     const { state: country } = useLocation()
+
+    useEffect(() => {
+        !country && navigate('/NotFound')
+    }, [country, navigate])
 
     const renderLanguages = () => (
         <ul className='languages'>Languages Spoken: {Object.values(country.languages).map((language) => (
@@ -26,7 +30,7 @@ const CountryDetails = () => {
                 <FaChevronLeft />
                 <span>Back</span>
             </button>
-            <div className='countryDetails'>
+            {country && <div className='countryDetails'>
                 <h1>{country.name.common}</h1>
                 <img src={country.flags.png} alt="country flag" />
                 <p>Population: <span>{Number(country.population).toLocaleString()}</span></p>
@@ -36,7 +40,7 @@ const CountryDetails = () => {
                 {renderLanguages()}
                 {renderCurrencies()}
                 <p>Subregion: <span>{country.subregion}</span></p>
-            </div>
+            </div>}
         </div>
     )
 }
