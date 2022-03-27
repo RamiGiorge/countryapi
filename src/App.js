@@ -14,8 +14,9 @@ function App() {
         <Navbar />
         <QueryClientProvider client={client}>
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/country/:country" element={<CountryDetails />} />
+            <Route path="/countryapi" element={<Home />} />
+            <Route path="/countryapi/country/:country" element={<CountryDetails />} />
+            <Route path="/countryapi/NotFound" element={<NotFound />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </QueryClientProvider>

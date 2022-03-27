@@ -7,7 +7,7 @@ const CountryDetails = () => {
     const { state: country } = useLocation()
 
     useEffect(() => {
-        !country && navigate('/NotFound')
+        !country && navigate('/countryapi/NotFound')
     }, [country, navigate])
 
     const renderLanguages = () => (

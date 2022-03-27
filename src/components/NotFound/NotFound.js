@@ -9,7 +9,7 @@ const NotFound = () => {
             <h1>
                 The page you requested cannot be found!
             </h1>
-            <h2>Let's take you back <Link to={'/'}>Home</Link></h2>
+            <h2>Let's take you back <Link to={'/countryapi'}>Home</Link></h2>
         </div>
     )
 }
