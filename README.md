@@ -24,3 +24,5 @@ Built with React, pure CSS, React Router v6 and React-Query
 <img width="1120" alt="Screen Shot 2022-03-28 at 2 05 20 AM" src="https://user-images.githubusercontent.com/89678609/160305249-9bededeb-4dc3-4b17-9038-302ca1a324ee.png">
 <img width="692" alt="Screen Shot 2022-03-28 at 2 09 03 AM" src="https://user-images.githubusercontent.com/89678609/160305251-2f084ded-18a6-44de-b9da-f96e1e1f79c8.png">
 <img width="692" alt="Screen Shot 2022-03-28 at 2 09 19 AM" src="https://user-images.githubusercontent.com/89678609/160305256-0ad0fa9f-fe09-434a-8108-5b5868dd55e7.png">
+<img width="1163" alt="Screen Shot 2022-03-28 at 2 29 16 AM" src="https://user-images.githubusercontent.com/89678609/160305997-fad2d2e6-9893-42f2-bc8b-c535df6d4229.png">
+<img width="1164" alt="Screen Shot 2022-03-28 at 2 28 05 AM" src="https://user-images.githubusercontent.com/89678609/160305999-b3e879a3-1370-4e8f-a4e8-f4719253021c.png">
