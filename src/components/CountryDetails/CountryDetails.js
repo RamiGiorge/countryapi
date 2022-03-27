@@ -26,7 +26,7 @@ const CountryDetails = () => {
 
     return (
         <div className='detailsContainer'>
-            <button onClick={() => navigate('/')} className='back'>
+            <button onClick={() => navigate('/countryapi')} className='back'>
                 <FaChevronLeft />
                 <span>Back</span>
             </button>

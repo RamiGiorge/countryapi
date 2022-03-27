@@ -1,6 +1,6 @@
 import Navbar from "./components/Navbar/Navbar";
 import Home from "./containers/Home";
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { HashRouter as Router, Routes, Route } from 'react-router-dom'
 import CountryDetails from "./components/CountryDetails/CountryDetails";
 import { QueryClientProvider, QueryClient } from 'react-query'
 import NotFound from "./components/NotFound/NotFound";

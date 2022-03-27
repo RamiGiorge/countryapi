@@ -79,9 +79,9 @@ const SearchForm = ({ countries, setResults }) => {
     return () => (isMounted = false)
   }, [getCountries])
 
-  const onChange = (e) => setInput(e.target.value.trim().toLowerCase())
+  const onChange = (e) => setInput(e.target.value.toLowerCase())
 
-  const selectCountry = (country) => setInput(country.name.common.trim().toLowerCase())
+  const selectCountry = (country) => setInput(country.name.common.toLowerCase())
 
   const selectRegion = (e) => {
     setRegion(e.target.textContent)
