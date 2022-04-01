@@ -8,6 +8,7 @@ const GlobalStyles = createGlobalStyle`
         --dark-gray: #414252;
         --faded: #969aab;
         --text: #f13a68;
+        --bulb: #e9da11;
     }
 
     * {
@@ -65,7 +66,7 @@ const GlobalStyles = createGlobalStyle`
                 color: var(--text);
             }
             button {
-                color: #e9da11;
+                color: var(--bulb);
             }
         }
 
@@ -89,17 +90,20 @@ const GlobalStyles = createGlobalStyle`
                 color: var(--background);
                 &:hover{
                     box-shadow: none;
-                    transform: none;
-                    font-size: 20px;
+                    transform: scale(1.1);
                 }
                 span, h1 {
                     color: var(--text);
                 }
             }
+
+            h3 {
+                color: var(--background);
+            }
         }
 
         .fetchBtn {
-            color: #f13a68;
+            color: var(--text);
             box-shadow: 0 -5px 20px black;
         }
 

@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const StyledCard = styled.div`
-    max-height: 450px;
+    height: 350px;
     border-radius: 10px;
     animation: fadein ease-in 0.4s;
 
@@ -13,6 +13,7 @@ export const StyledCard = styled.div`
         flex-direction: column;
         justify-content: space-between;
         gap: 10px;
+        font-size: 0.9em;
         font-weight: 700;
         box-shadow: -8px -8px 15px #fff, 8px 8px 15px #babecc;
         transition: all .2s ease;

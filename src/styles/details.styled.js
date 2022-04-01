@@ -24,9 +24,9 @@ const StyledDetails = styled.div`
         transition: all 0.2s ease;
         &:hover {
             transform: scale(1.1);
-            color: #f13a68;
+            color: var(--text);
             span {
-                color: #f13a68;
+                color: var(--text);
                 font-weight: 700;
             }
         }

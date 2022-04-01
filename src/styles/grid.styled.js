@@ -14,7 +14,7 @@ export const StyledGrid = styled.div`
     }
 
     h3 {
-        color: #f13a68;
+        color: var(--text);
         text-align: center;
         font-weight: 700;
         margin-top: 40px;
