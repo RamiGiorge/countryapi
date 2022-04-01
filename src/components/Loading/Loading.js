@@ -1,11 +1,12 @@
 import React from 'react'
 import loading from '../../assets/loading.gif'
+import StyledModal from '../../styles/modal.styled'
 
 const Loading = () => {
     return (
-        <div className='loading'>
+        <StyledModal>
             <img src={loading} alt="loading" />
-        </div>
+        </StyledModal>
     )
 }
 

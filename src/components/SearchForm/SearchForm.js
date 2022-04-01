@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react"
 import { FaChevronDown, FaChevronUp } from "react-icons/fa"
+import StyledForm from "../../styles/searchForm.styled"
 
 const SearchForm = ({ countries, setResults }) => {
   const [input, setInput] = useState("")
@@ -34,6 +35,11 @@ const SearchForm = ({ countries, setResults }) => {
     setSuggestions(null)
   }
 
+  const clearSearch = () => {
+    setInput('')
+    inputRef.current.focus()
+  }
+
   const getCountries = useCallback(() => {
     if (input) {
       const results = regions.includes(region) ?
@@ -48,30 +54,6 @@ const SearchForm = ({ countries, setResults }) => {
       setSuggestions(null)
     }
   }, [countries, region, input, setResults, regions])
-
-  // if (regions.includes(region) && input) {
-  //   const results = countries?.filter((c) => c.name.common.toLowerCase().includes(input) && c.region === region)
-  //   results.length ? setSuggestions(results) : setSuggestions(null)
-  //   setResults(results)
-  //   results.length === 1 && results[0].name.common.toLowerCase() === input && setSuggestions(null)
-  // }
-
-  // if (!regions.includes(region) && input) {
-  //   const results = countries?.filter(c => c.name.common.toLowerCase().includes(input))
-  //   results.length ? setSuggestions(results) : setSuggestions(null)
-  //   setResults(results)
-  //   results.length === 1 && results[0].name.common.toLowerCase() === input && setSuggestions(null)
-  // }
-
-  // if (!regions.includes(region) && !input) {
-  //   setResults(countries)
-  //   setSuggestions(null)
-  // }
-
-  // if (regions.includes(region) && !input) {
-  //   setResults(countries?.filter(c => c.region === region))
-  //   setSuggestions(null)
-  // }
 
   useEffect(() => {
     let isMounted = true
@@ -89,15 +71,16 @@ const SearchForm = ({ countries, setResults }) => {
   }
 
   return (
-    <form onSubmit={handleSearch} className="searchForm">
+    <StyledForm onSubmit={handleSearch}>
       <div className="inputContainer">
         <input ref={inputRef} type="text" value={input} onChange={onChange}
           placeholder="Search for a country..." disabled={countries ? false : true} />
+        <button type='button' onClick={clearSearch}>Clear</button>
 
         {suggestions && (
-          <ul className="autocomplete" ref={autoRef}>
+          <ul ref={autoRef}>
             {suggestions.map((country) => (
-              <li key={country.name.common} className="suggestion" onClick={() => selectCountry(country)}>
+              <li key={country.name.common} onClick={() => selectCountry(country)}>
                 {country.name.common}
               </li>
             ))}
@@ -106,19 +89,19 @@ const SearchForm = ({ countries, setResults }) => {
       </div>
 
       <div className="filterContainer">
-        <div className="select pointer" onClick={() => setShowFilter(!showFilter)}>
+        <div onClick={() => setShowFilter(!showFilter)}>
           <button type="button">{region}</button>
           {!showFilter ? <FaChevronDown /> : <FaChevronUp />}
         </div>
 
         {showFilter && (
-          <ul className="dropdown">
+          <ul>
             <li onClick={selectRegion}>All</li>
             {regions.map((region) => <li onClick={selectRegion} key={region}>{region}</li>)}
           </ul>
         )}
       </div>
-    </form>
+    </StyledForm>
   )
 }
 

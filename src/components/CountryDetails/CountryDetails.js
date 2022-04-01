@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { FaChevronLeft } from 'react-icons/fa'
 import { useLocation, useNavigate } from 'react-router-dom'
+import StyledDetails from '../../styles/details.styled'
 
 const CountryDetails = () => {
     const navigate = useNavigate()
@@ -11,26 +12,26 @@ const CountryDetails = () => {
     }, [country, navigate])
 
     const renderLanguages = () => (
-        <ul className='languages'>Languages Spoken: {Object.values(country.languages).map((language) => (
+        <ul>Languages Spoken: {Object.values(country.languages).map((language) => (
             <li key={language}>{language}</li>
         ))}
         </ul>
     )
 
     const renderCurrencies = () => (
-        <ul className='currencies'>Currencies Used: {Object.values(country.currencies).map(({ name }) => (
-            <li key={Math.random()}>{name}</li>
+        <ul>Currencies Used: {Object.values(country.currencies).map(({ name }) => (
+            <li key={name}>{name}</li>
         ))}
         </ul>
     )
 
     return (
-        <div className='detailsContainer'>
-            <button onClick={() => navigate('/countryapi')} className='back'>
+        <StyledDetails className='details-container'>
+            <button onClick={() => navigate('/countryapi')}>
                 <FaChevronLeft />
                 <span>Back</span>
             </button>
-            {country && <div className='countryDetails'>
+            {country && <div>
                 <h1>{country.name.common}</h1>
                 <img src={country.flags.png} alt="country flag" />
                 <p>Population: <span>{Number(country.population).toLocaleString()}</span></p>
@@ -41,7 +42,7 @@ const CountryDetails = () => {
                 {renderCurrencies()}
                 <p>Subregion: <span>{country.subregion}</span></p>
             </div>}
-        </div>
+        </StyledDetails>
     )
 }
 

@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { FaMoon, FaLightbulb } from 'react-icons/fa'
+import { StyledNavbar } from '../../styles/navbar.styled'
+
 
 const Navbar = () => {
     const [dark, setDark] = useState(false)
@@ -15,13 +17,13 @@ const Navbar = () => {
     }, [dark])
 
     return (
-        <nav className='navbar'>
+        <StyledNavbar>
             <h1>Where in the world?</h1>
-            <button onClick={(toggleDark)} className='pointer'>
-                {dark ? <FaLightbulb className='icon' /> : <FaMoon className='icon' />}
+            <button onClick={(toggleDark)}>
+                {dark ? <FaLightbulb /> : <FaMoon />}
                 <h3>{dark ? 'Light ' : 'Dark '}Mode</h3>
             </button>
-        </nav>
+        </StyledNavbar>
     )
 }
 

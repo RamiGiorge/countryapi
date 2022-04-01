@@ -1,22 +1,23 @@
 import { useState } from 'react'
 import { FaChevronDown } from "react-icons/fa";
 import Card from '../Card/Card';
+import { StyledGrid } from '../../styles/grid.styled'
 
 const CountriesGrid = ({ results }) => {
 
     const [next, setNext] = useState(20)
 
     return (
-        <div className='gridContainer'>
-            {results?.length ? <section className="countryGrid">{results.map((country, i) => (
+        <StyledGrid>
+            {results?.length ? <section>{results.map((country, i) => (
                 i < next ? <Card country={country} key={country.name.common} /> : null
             ))}
             </section> : null}
-            {!results?.length && <h3 className='searchResult'>No countries found!</h3>}
+            {!results?.length && <h3>No countries found!</h3>}
             <button onClick={() => setNext(prev => prev + 20)} className='fetchBtn'>
                 <FaChevronDown />
             </button>
-        </div>
+        </StyledGrid>
     )
 }
 
